@@ -1,6 +1,8 @@
-## Experiments in El Nino analysisand prediction
+## Experiments in El Nino analysis and prediction
 
-#### R / netcdf-convertor.R.
+This software is connected to the Azimuth Code Project [Experiments in El Nino analysis and prediction](http://www.azimuthproject.org/azimuth/show/Experiments%20in%20El%20Ni%C3%B1o%20analysis%20and%20prediction).
+
+#### R / netcdf-convertor-ludescher.R.
 
 This converts netCDF files containing surface temperature data from NOAA (eg  air.sig995.1951.nc) into a format more easily readable by other programs in other languages. You will need to edit it to your requirements:
 
