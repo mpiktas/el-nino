@@ -1,4 +1,4 @@
-## Experiments in detection and prediction of El Nino/La Nina events.
+## Experiments in El Nino analysis and prediction.
 
 #### R / netcdf-convertor.R.
 
