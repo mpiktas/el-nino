@@ -20,10 +20,6 @@
 # Very early warning of next El Niño, Proceedings of the 
 # National Academy of Sciences, February 2014.  
 
-# Choose your working directory for R here:
-
-setwd("C:/Users/JOHN/Documents/My Backups/azimuth/el nino")
-
 # Choose your latitude and longitude range:
 
 lat.range <- 24:50
@@ -45,9 +41,8 @@ outputfilename <- paste0("Pacific-", firstyear, "-", lastyear, ".txt")
 
 #                  Explanation
 
-
-# 1. Use setwd() to set the working directory to the one 
-# containing the .nc files such as air.sig995.1951.nc.
+# 1. Before running this, remember to use setwd() to set the working 
+# directory to the onecontaining the .nc files such as air.sig995.1951.nc.
 # Example:
 # setwd("C:/Users/JOHN/Documents/My Backups/azimuth/el nino")
 
