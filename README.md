@@ -16,7 +16,10 @@ More instructions are in the script itself.  For detailed explanations, see [Par
 
 #### R / grj / ludescher.R
 
-This program is aimed at replicating the  [paper by Ludescher *et al*](http://www.pnas.org/content/early/2013/06/26/1309353110.full.pdf+html).  Instructions are in the script itself.  For detailed explanations, see [Part 3](http://johncarlosbaez.wordpress.com/2014/07/01/el-nino-project-part-3/), [Part 4](http://johncarlosbaez.wordpress.com/2014/07/08/el-nino-project-part-4/) and [Part 5](http://johncarlosbaez.wordpress.com/2014/07/12/el-nino-project-part-5/) of the El Ni&ntilde;o Project series on the Azimuth blog.
+This program is aimed at replicating the  [paper by Ludescher *et al*](http://www.pnas.org/content/early/2013/06/26/1309353110.full.pdf+html).  To run it, you need to have the files
+`Pacific-1948-1980.txt` (created using the above program, netcdf-convertor-ludescher.R) and nino3.4-anoms.txt in your working directory for R.
+
+For detailed explanations of what the program does, see [Part 3](http://johncarlosbaez.wordpress.com/2014/07/01/el-nino-project-part-3/) and [Part 4](http://johncarlosbaez.wordpress.com/2014/07/08/el-nino-project-part-4/) of the El Ni&ntilde;o Project series on the Azimuth blog.
 
 #### R / grj / covariances-basin-vs-rest.R
 
