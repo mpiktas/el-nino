@@ -35,6 +35,6 @@ This fie  has the average link strength S as computed by `ludescher.R` at 10-day
 
 #### R / grj / covariances-basin-vs-rest.R
 
-Makes maps of the Pacific, one per quarter from 1951 to 1979, showing covariances of grid points with the "Ludescher et al basin"
+Makes maps of the Pacific, one per quarter from 1951 to 1979, showing covariances of grid points with the 'Ludescher et al basin'.
 
 ```
