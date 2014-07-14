@@ -14,12 +14,18 @@ whole file into the R console. (There are other ways of running R scripts but th
 
 More instructions are in the script itself.  For detailed explanations, see [Part 4](http://johncarlosbaez.wordpress.com/2014/07/08/el-nino-project-part-4/) and [Part 5](http://johncarlosbaez.wordpress.com/2014/07/12/el-nino-project-part-5/) of the El Ni&ntilde;o Project series on the Azimuth blog.
 
-#### R / grj / ludescher.R
+#### R / nino3.4-anoms.txt
+
+This is a copy of the [monthly Niño 3.4 index](http://www.cpc.noaa.gov/products/analysis_monitoring/ensostuff/detrend.nino34.ascii.txt) from the [US National Weather Service](http://www.cpc.noaa.gov/products/analysis_monitoring/ensostuff/detrend.nino34.ascii.txt); the copy was made in July 2014 and contains data from 1948 to 2013.  It has monthly Niño 3.4 data in the column called ANOM.
+
+#### R / ludescher.R
 
 This program is aimed at replicating the  [paper by Ludescher *et al*](http://www.pnas.org/content/early/2013/06/26/1309353110.full.pdf+html).  To run it, you need to have the files
-`Pacific-1948-1980.txt` (created using the above program, netcdf-convertor-ludescher.R) and nino3.4-anoms.txt in your working directory for R.
+`Pacific-1948-1980.txt` (created using the above program, netcdf-convertor-ludescher.R) and `nino3.4-anoms.txt` in your working directory for R.
 
 For detailed explanations of what the program does, see [Part 3](http://johncarlosbaez.wordpress.com/2014/07/01/el-nino-project-part-3/) and [Part 4](http://johncarlosbaez.wordpress.com/2014/07/08/el-nino-project-part-4/) of the El Ni&ntilde;o Project series on the Azimuth blog.
+
+
 
 #### R / grj / covariances-basin-vs-rest.R
 
