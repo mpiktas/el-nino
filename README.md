@@ -29,6 +29,10 @@ This program is aimed at replicating the  [paper by Ludescher *et al*](http://ww
 
 For detailed explanations of what the program does, see [Part 3](http://johncarlosbaez.wordpress.com/2014/07/01/el-nino-project-part-3/) and [Part 4](http://johncarlosbaez.wordpress.com/2014/07/08/el-nino-project-part-4/) of the El Ni&ntilde;o Project series.
 
+#### R / average-link-strength.R
+
+This fie  has the average link strength S as computed by `ludescher.R` at 10-day intervals, starting from day 730 and going until day 12040, where day 1 is the first of January 1948.  For an explanation see  [Part 4](http://johncarlosbaez.wordpress.com/2014/07/08/el-nino-project-part-4/) of the El Ni&ntilde;o Project series.
+
 #### R / grj / covariances-basin-vs-rest.R
 
 Makes maps of the Pacific, one per quarter from 1951 to 1979, showing covariances of grid points with the "Ludescher et al basin"
