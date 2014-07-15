@@ -34,7 +34,7 @@ lastyear <- 1979
 # is "Pacific-".  
 # paste0() concatenates strings, which you may find handy:
 
-outputfilename <- paste0("Pacific-", firstyear, "-", lastyear, ".txt")
+outputfilename <- paste0("data/Pacific-", firstyear, "-", lastyear, ".txt")
 
 #############################################################
 #############################################################
@@ -112,12 +112,9 @@ for (lat in lat.range) {
     index.table[lat, lon] <- index.from.latlon(lat, lon)
   }
 }
-
-
-
 setof.Kvals <- NULL
 for (i in firstyear:lastyear) {
-  setof.Kvals <- rbind(setof.Kvals, make.Kvals.for.year(i))
+  setof.Kvals <- rbind(setof.Kvals, make.Kvals.for.year(i,datadir="data/"))
 }
 
 write.table(x=round(setof.Kvals, digits=2), file=outputfilename, quote=FALSE)
