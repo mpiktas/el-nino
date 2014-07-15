@@ -1,3 +1,4 @@
+##This file is generated in puzzle3.R
 Kvals <- as.matrix(read.table(file="data/Pacific-1980-1983.txt", header=TRUE))
 ludescher.basin <- function() {
   lats <- c( 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 6, 6)
