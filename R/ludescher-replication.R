@@ -42,12 +42,12 @@ SAvals.3D <- seasonally.adjust(Kvals.3D)
 
 SAvals.3D.3x3 <- subsample.3x3(SAvals.3D)
 
-firstyear <- 1950
-lastyear <- 1979
 n <- 365
 m <- 200
 step <- 10
-w <- seq(from = (firstyear-1948)*365, to=dim(SAvals.3D.3x3)[1], by=step)
+
+##original code skips first two years. So do we.
+w <- seq(from = 2*365, to = dim(SAvals.3D.3x3)[1], by=step)
 
 rmeans <- make.runningmeans(SAvals.3D.3x3)
 
@@ -67,7 +67,9 @@ time.axis <- firstyear+(0:(length(S)-1)) * step / 365
 par(mar=c(5, 4, 4, 5))
 plot(time.axis, S, type='n', xlab="Years", ylab="Signal strength S", 
      main=expression(paste("S and ", theta, " in red. Niño 3.4 in blue, below 0.5°C shaded")))
-ninoplotinfo <- find.nino.plotting.info(firstyear, lastyear, min(S), max(S))
+
+nini <- read.table("nino3.4-anoms.txt", skip=1, header=TRUE)
+ninoplotinfo <- find.nino.plotting.info(firstyear, lastyear, min(S), max(S),nini)
 plot.nino.zp5.rect(ninoplotinfo, "#eeeeffff")
 for (yr in firstyear:(lastyear+1)) {
   lines(c(yr,yr), c(min(S),max(S)), col="grey80")

@@ -256,8 +256,7 @@ plot.nino.3.4.background.rectangle <- function(mint, maxt, col) {
 }
 
 
-find.nino.plotting.info <- function(firstyear, lastyear, miny, maxy) {
-  nini <- read.table("nino34-anoms.txt", skip=1, header=TRUE)
+find.nino.plotting.info <- function(firstyear, lastyear, miny, maxy, nini) {  
   nini <- as.matrix(nini)
   w <- which((nini[,"YR"] >= firstyear) & (nini[,"YR"] <= lastyear))
   stopifnot((length(w) %% 12) == 0)
