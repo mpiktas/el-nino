@@ -14,14 +14,14 @@ point.names <- function() {
 }
 
 
-make.Kvals.for.year <- function(year,datadir="") { 
+make.Kvals.for.year <- function(year, tb, datadir="") { 
   onc <- open.nc(paste0(datadir,"air.sig995.", year, ".nc"))
   rnc <- read.nc(onc)
   close.nc(onc)
   yearof.Kvals <- matrix(0, nrow=365, ncol=n.points)
   for (lat in lat.range) {
     for (lon in lon.range) { 
-      yearof.Kvals[, index.table[lat, lon] ] <- rnc$air[ lon, lat, 1:365 ] # ignore leap days
+      yearof.Kvals[, tb[lat, lon] ] <- rnc$air[ lon, lat, 1:365 ] # ignore leap days
     }
   }
   

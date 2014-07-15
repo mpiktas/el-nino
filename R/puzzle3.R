@@ -7,7 +7,7 @@ lon.range <- 48:116
 
 # Supply the first and last years:
 firstyear <- 1980
-lastyear <- 2013
+lastyear <- 1985
 
 # Supply the output name as a text string.  The default here
 # is "Pacific-".  

@@ -1,3 +1,5 @@
+#Ignore Tags
+TAGS
 #Ignore main .RData 
 *.RData
 *.RDataTmp

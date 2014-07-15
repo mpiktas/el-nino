@@ -22,19 +22,6 @@
 
 # Choose your latitude and longitude range:
 
-lat.range <- 24:50
-lon.range <- 48:116 
-
-# Supply the first and last years:
-
-firstyear <- 1948
-lastyear <- 1979
-
-# Supply the output name as a text string.  The default here
-# is "Pacific-".  
-# paste0() concatenates strings, which you may find handy:
-
-outputfilename <- paste0("data/Pacific-", firstyear, "-", lastyear, ".txt")
 
 #############################################################
 #############################################################
@@ -92,7 +79,7 @@ outputfilename <- paste0("data/Pacific-", firstyear, "-", lastyear, ".txt")
 #############################################################
 
 library(RNetCDF)
-
+source("code/convertor.R")
 
 n.lat <- length(lat.range)
 n.lon <- length(lon.range)
@@ -114,7 +101,7 @@ for (lat in lat.range) {
 }
 setof.Kvals <- NULL
 for (i in firstyear:lastyear) {
-  setof.Kvals <- rbind(setof.Kvals, make.Kvals.for.year(i,datadir="data/"))
+  setof.Kvals <- rbind(setof.Kvals, make.Kvals.for.year(i,index.table,datadir="data/"))
 }
 
 write.table(x=round(setof.Kvals, digits=2), file=outputfilename, quote=FALSE)
