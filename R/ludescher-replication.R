@@ -33,7 +33,7 @@ ludescher.basin <- function() {
 #########################################################
 #################### Main analysis
 
-Kvals <- as.matrix(read.table(file="Pacific-1948-1979.txt", header=TRUE))
+
 Kvals.cnames <- colnames(Kvals)
 
 Kvals.3D <- data.to.3D(Kvals)
