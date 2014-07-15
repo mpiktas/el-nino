@@ -21,3 +21,4 @@ nini <- read.table("nino3.4-anoms.txt", skip=1, header=TRUE)
 
 S <- ludescher_replication(Kvals,ludescher.basin(),n=365,m=200,step=10)
 
+plot.S(S,nini)

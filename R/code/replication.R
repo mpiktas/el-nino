@@ -286,7 +286,7 @@ plot.nino.3.4 <- function(plotinfo, col) {
   lines(plotinfo$time.axis, plotinfo$yrnini, col=col)
 }
 
-ludescher_replication <- function(Kvals,basin,n,m,step) {
+ludescher_replication <- function(Kvals,basin,n,m,step,coarse=TRUE) {
     years <- as.numeric(unique(substr(rownames(Kvals),2,5)))
     Kvals.cnames <- colnames(Kvals)
 
@@ -294,7 +294,9 @@ ludescher_replication <- function(Kvals,basin,n,m,step) {
     
     SAvals.3D <- seasonally.adjust(Kvals.3D)
 
-    SAvals.3D.3x3 <- subsample.3x3(SAvals.3D)
+    if(coarse)SAvals.3D.3x3 <- subsample.3x3(SAvals.3D)
+    else SAvals.3D.3x3 <- SAvals.3D
+        
     w <- seq(from = 2*365, to = dim(SAvals.3D.3x3)[1], by=step)
 
     rmeans <- make.runningmeans(SAvals.3D.3x3,n)
