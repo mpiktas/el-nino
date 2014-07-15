@@ -99,7 +99,7 @@ subsample.3x3 <- function(vals) {
 # output: 3D array of the same dimensions as vals 
 #containing running means
 
-make.runningmeans <- function(vals) {
+make.runningmeans <- function(vals,n) {
   rmeans <- array(0, dim=dim(vals))
   for (lat in 1:dim(vals)[2]) {
     for (lon in 1:dim(vals)[3]) { 
@@ -286,4 +286,62 @@ plot.nino.3.4 <- function(plotinfo, col) {
   lines(plotinfo$time.axis, plotinfo$yrnini, col=col)
 }
 
+ludescher_replication <- function(Kvals,basin,n,m,step) {
+    years <- as.numeric(unique(substr(rownames(Kvals),2,5)))
+    Kvals.cnames <- colnames(Kvals)
 
+    Kvals.3D <- data.to.3D(Kvals)
+    
+    SAvals.3D <- seasonally.adjust(Kvals.3D)
+
+    SAvals.3D.3x3 <- subsample.3x3(SAvals.3D)
+    w <- seq(from = 2*365, to = dim(SAvals.3D.3x3)[1], by=step)
+
+    rmeans <- make.runningmeans(SAvals.3D.3x3,n)
+
+    S <- rep(0, length(w))
+    for (i in 1:length(w)) {
+        d <- w[i]
+        sds <- make.standarddevs(SAvals.3D.3x3, n, m, d)  
+        S[i] <- signalstrength("abs.correlations", basin, SAvals.3D.3x3, rmeans, sds, n, m, d)
+        cat("done day", d, "S(d)=", S[i], "\n")  
+    }
+    list(S=S,n=n,m=m,step=10,firstyear=min(years),lastyear=max(years))
+}
+
+plot.S <- function(S,nini) {
+    time.axis <- S$firstyear+2+(0:(length(S$S)-1)) * S$step / 365
+    par(mar=c(5, 4, 4, 5))
+    plot(time.axis, S$S, type='n', xlab="Years", ylab="Signal strength S", 
+         main=expression(paste("S and ", theta, " in red. Niño 3.4 in blue, below 0.5°C shaded")))
+
+    ninoplotinfo <- find.nino.plotting.info(S$firstyear, S$lastyear, min(S$S), max(S$S),nini)
+    plot.nino.zp5.rect(ninoplotinfo, "#eeeeffff")
+    for (yr in (S$firstyear+2):(S$lastyear+1)) {
+        lines(c(yr,yr), c(min(S$S),max(S$S)), col="grey80")
+    }
+    lines(time.axis, S$S, col="red")
+    plot.nino.3.4(ninoplotinfo, "blue")
+    lines(c(S$firstyear,(S$lastyear+1)), rep(2.82,2), col="red")
+    axis(side=4, at=ninoplotinfo$ticks, labels=ninoplotinfo$labels)
+    mtext(text="NINO 3.4 index", side = 4, line = 3)    
+}
+
+plot.cmp.S <- function(S1,S2,nini) {
+    time.axis <- S1$firstyear+2+(0:(length(S1$S)-1)) * S1$step / 365
+    par(mar=c(5, 4, 4, 5))
+    plot(time.axis, S1$S, type='n', xlab="Years", ylab="Signal strength S", 
+         main=expression(paste("S1 and ", theta, " in red. Niño 3.4 in blue, below 0.5°C shaded")))
+
+    ninoplotinfo <- find.nino.plotting.info(S1$firstyear, S1$lastyear, min(S1$S), max(S1$S),nini)
+    plot.nino.zp5.rect(ninoplotinfo, "#eeeeffff")
+    for (yr in (S1$firstyear+2):(S1$lastyear+1)) {
+        lines(c(yr,yr), c(min(S1$S),max(S1$S)), col="grey80")
+    }
+    lines(time.axis, S1$S, col="red")
+    lines(time.axis, S2$S, col="green")
+    plot.nino.3.4(ninoplotinfo, "blue")
+    lines(c(S1$firstyear,(S1$lastyear+1)), rep(2.82,2), col="red")
+    axis(side=4, at=ninoplotinfo$ticks, labels=ninoplotinfo$labels)
+    mtext(text="NINO 3.4 index", side = 4, line = 3)    
+}

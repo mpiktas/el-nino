@@ -29,3 +29,31 @@ make.Kvals.for.year <- function(year, tb, datadir="") {
   rownames(yearof.Kvals) <- paste0("Y", year, "P", sprintf("%03d", 1:365))
   yearof.Kvals
 }
+
+read.Kvals <- function(lat.range,lon.range,firstyear,lastyear,prefix=NULL) {
+    n.lat <- length(lat.range)
+    n.lon <- length(lon.range)
+    n.points <- n.lat * n.lon
+    smallest.lat <- lat.range[1]
+    smallest.lon <- lon.range[1]
+    biggest.lat <- lat.range[n.lat]
+    biggest.lon <- lon.range[n.lon]
+    
+    ## extract the data as a vector (not a matrix) at each time
+    ## These functions do the translation
+
+
+    index.table <- matrix(0, nrow=biggest.lat, ncol=biggest.lon)
+    for (lat in lat.range) {
+        for (lon in lon.range) {
+            index.table[lat, lon] <- index.from.latlon(lat, lon)
+        }
+    }
+    setof.Kvals <- NULL
+    for (i in firstyear:lastyear) {
+        setof.Kvals <- rbind(setof.Kvals, make.Kvals.for.year(i,index.table,datadir="data/"))
+    }
+    
+    if(!is.null(prefix))write.table(x=round(setof.Kvals, digits=2), file=paste0(prefix,firstyear,"-",lastyear,".txt"), quote=FALSE)
+    round(setof.Kvals,digits=2)
+}
