@@ -24,8 +24,8 @@ source("code/replication.R")
 ############ Making the link strengths - basin vs rest
 
 ludescher.basin <- function() {
-  lats <- c( 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 6, 6)
-  lons <- c(11,12,13,14,15,16,17,18,19,20,21,22,16,22)
+  lats <- c( 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5)
+  lons <- c(11,12,13,14,15,16,17,18,19,20,21,22)
   stopifnot(length(lats) == length(lons))
   list(lats=lats,lons=lons)
 }
@@ -63,7 +63,7 @@ for (i in 1:length(w)) {
 #########################################################
 ############## Plotting results
 
-time.axis <- firstyear+(0:(length(S)-1)) * step / 365
+time.axis <- firstyear+2+(0:(length(S)-1)) * step / 365
 par(mar=c(5, 4, 4, 5))
 plot(time.axis, S, type='n', xlab="Years", ylab="Signal strength S", 
      main=expression(paste("S and ", theta, " in red. Niño 3.4 in blue, below 0.5°C shaded")))
